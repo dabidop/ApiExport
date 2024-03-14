@@ -1,0 +1,22 @@
+{
+  "name": "donaciones-api",
+  "version": "1.0.0",
+  "description": "API para el modulo de donaciones",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Julián Lopera",
+  "license": "ISC",
+  "engines": {
+    "node": ">=14.20.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.3",
+    "mongoose": "^8.2.1",
+    "nodemon": "^3.1.0"
+  }
+}
