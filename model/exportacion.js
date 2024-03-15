@@ -1,14 +1,10 @@
 const {Schema, model} = require('mongoose');
 
 const ExportacionSchema = ({
-    idExportacion:{
-        type:Number,
-        required:[true, 'El id de la exportacion es requerido'],
-        unique:true
-    },
     producto:{
         type:String,
         required:[true, 'El tipo de producto es requerido'],
+        unique:true
     },
     kilos:{
         type:Number,

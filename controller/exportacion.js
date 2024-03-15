@@ -32,7 +32,6 @@ const postExportacion = async (req, res) => {
 }
 const putExportacion = async (req, res) => {
     const {
-        idExportacion,
         producto,
         kilos,
         precioKiloDolar,
@@ -40,7 +39,7 @@ const putExportacion = async (req, res) => {
     } = req.body; //desestructurar
     try {
       const exportante = await exportacion.findOneAndUpdate(
-        { idExportacion: idExportacion },
+        { producto : producto  },
         {
             producto: producto,
             kilos: kilos,
@@ -58,10 +57,10 @@ const putExportacion = async (req, res) => {
   };
 
 const deleteExportacion = async (req, res) => {
-    const {idExportacion} = req.body
+    const {} = req.body
     let mensaje = 'Eliminación exitosa'
     try {
-        const exportaciones = await exportacion.findOneAndDelete({idExportacion: idExportacion})
+        const exportaciones = await exportacion.findOneAndDelete({ producto : producto })
     } catch (error) {
         mensaje = error;
     }
