@@ -57,7 +57,7 @@ const putExportacion = async (req, res) => {
   };
 
 const deleteExportacion = async (req, res) => {
-    const {} = req.body
+    const {producto} = req.body
     let mensaje = 'Eliminación exitosa'
     try {
         const exportaciones = await exportacion.findOneAndDelete({ producto : producto })
@@ -66,7 +66,7 @@ const deleteExportacion = async (req, res) => {
     }
     res.json({
         msg:mensaje
-    });
+    });A
 };
 
 module.exports = {
