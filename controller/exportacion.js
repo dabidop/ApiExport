@@ -5,13 +5,13 @@ const exportacion = require('../model/exportacion');
 const getExportacion = async (req, res) => {
     const exportaciones = await exportacion.find();//Obtener todos los documentos de una coleccion
     res.json({
-        msg: exportaciones
+        Exportaciones: exportaciones
     })
 };
 
 const postExportacion = async (req, res) => {
     const datos = req.body //capturar datos de la postman
-
+    console.log('Acá se van a imprimir los datos', datos)
     let mensaje = 'Inserción exitosa'
     try {
 
@@ -27,46 +27,47 @@ const postExportacion = async (req, res) => {
 
     //guarda en la base de datos
     res.json({
-        msg: mensaje
+        Exportaciones: mensaje
     })
 }
 const putExportacion = async (req, res) => {
     const {
+        idProducto,
         producto,
         kilos,
         precioKiloDolar,
         precioActualDolar
     } = req.body; //desestructurar
     try {
-      const exportante = await exportacion.findOneAndUpdate(
-        { producto : producto  },
-        {
-            producto: producto,
-            kilos: kilos,
-            precioKiloDolar: precioKiloDolar,
-            precioActualDolar: precioActualDolar
-        }
-      ) //las primeras llaves son el valor por el cual voy a hacer la modificacion el segundo hace referencia a lo que el usuario envio
-      mensaje = "actualizacion exitosa"
+        const exportante = await exportacion.findOneAndUpdate(
+            { idProducto: idProducto },
+            {
+                producto: producto,
+                kilos: kilos,
+                precioKiloDolar: precioKiloDolar,
+                precioActualDolar: precioActualDolar
+            }
+        ) //las primeras llaves son el valor por el cual voy a hacer la modificacion el segundo hace referencia a lo que el usuario envio
+        mensaje = "actualizacion exitosa"
     } catch (error) {
-      mensaje = error
+        mensaje = error
     }
     res.json({
-      msg: mensaje
+        Exportaciones: mensaje
     });
-  };
+};
 
 const deleteExportacion = async (req, res) => {
-    const {producto} = req.body
-    let mensaje = 'Eliminación exitosa'
+    const { idProducto } = req.params; // Accede al ID de producto desde los parámetros de la URL
+    let mensaje = 'Eliminación exitosa';
     try {
-        const exportaciones = await exportacion.findOneAndDelete({ producto : producto })
+        const exportaciones = await exportacion.findOneAndDelete({ idProducto: idProducto });
     } catch (error) {
         mensaje = error;
     }
     res.json({
-        msg:mensaje
-    });A
+        Exportaciones: mensaje
+    });
 };
 
 module.exports = {

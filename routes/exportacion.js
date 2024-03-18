@@ -6,7 +6,7 @@ const{getExportacion, postExportacion, putExportacion, deleteExportacion} = requ
 
 route.get('/', getExportacion)
 route.post('/', postExportacion)
-route.put('/', putExportacion)
-route.delete('/', deleteExportacion)
+route.put('/:idProducto', putExportacion)
+route.delete('/:idProducto', deleteExportacion)
 
 module.exports = route
